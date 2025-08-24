@@ -358,9 +358,8 @@ class PrivacyManager {
   // Vérification du consentement existant
   checkConsent() {
     const consent = localStorage.getItem(this.consentKey);
-    if (!consent) {
-      this.showConsentModal();
-    }
+    // On n'affiche plus automatiquement le modal
+    // Seule la bannière s'affiche
   }
 
   // Création de la bannière de consentement
@@ -482,6 +481,7 @@ class PrivacyManager {
   updatePrivacyBanner() {
     const banner = document.getElementById('privacy-banner');
     if (banner) {
+      // On cache la bannière seulement si l'utilisateur a fait un choix
       banner.style.display = 'none';
     }
   }
@@ -490,7 +490,17 @@ class PrivacyManager {
   setupEventListeners() {
     document.addEventListener('click', (e) => {
       if (e.target.id === 'accept-all') {
-        this.acceptAllConsent();
+        // Acceptation rapide depuis la bannière
+        const preferences = {
+          essential: true,
+          analytics: true,
+          marketing: true,
+          timestamp: new Date().toISOString(),
+          version: '1.0'
+        };
+        localStorage.setItem(this.consentKey, JSON.stringify(preferences));
+        this.updatePrivacyBanner();
+        this.showNotification('Tous les consentements ont été acceptés.', 'success');
       } else if (e.target.id === 'customize') {
         this.showConsentModal();
       }
