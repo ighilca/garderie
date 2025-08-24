@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palette de couleurs - Garderie des trésors précieux</title>
+    <style>
+        :root {
+            --vibrant-blue: #42A5F5;
+            --playful-green: #8BC34A;
+            --sunny-yellow: #FFEB3B;
+            --cheerful-pink: #FFC8DD;
+            --warm-beige: #D2B48C;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: #f8fafc;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: var(--vibrant-blue);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .color-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .color-swatch {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .vibrant-blue { background: var(--vibrant-blue); }
+        .playful-green { background: var(--playful-green); }
+        .sunny-yellow { background: var(--sunny-yellow); }
+        .cheerful-pink { background: var(--cheerful-pink); }
+        .warm-beige { background: var(--warm-beige); }
+        
+        .color-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .color-hex {
+            font-family: monospace;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+        
+        .usage {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .usage h3 {
+            color: var(--vibrant-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .usage ul {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .usage li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Palette de couleurs de la garderie</h1>
+        
+        <div class="color-grid">
+            <div class="color-card">
+                <div class="color-swatch vibrant-blue"></div>
+                <div class="color-name">Vibrant Blue</div>
+                <div class="color-hex">#42A5F5</div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch playful-green"></div>
+                <div class="color-name">Playful Green</div>
+                <div class="color-hex">#8BC34A</div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch sunny-yellow"></div>
+                <div class="color-name">Sunny Yellow</div>
+                <div class="color-hex">#FFEB3B</div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch cheerful-pink"></div>
+                <div class="color-name">Cheerful Pink</div>
+                <div class="color-hex">#FFC8DD</div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch warm-beige"></div>
+                <div class="color-name">Warm Beige</div>
+                <div class="color-hex">#D2B48C</div>
+            </div>
+        </div>
+        
+        <div class="usage">
+            <h3>Utilisation des couleurs sur le site :</h3>
+            <ul>
+                <li><strong>Vibrant Blue (#42A5F5)</strong> : Header, statistiques, effets de survol</li>
+                <li><strong>Playful Green (#8BC34A)</strong> : Nombres de capacité, jours ouverts</li>
+                <li><strong>Sunny Yellow (#FFEB3B)</strong> : Section hero, section info</li>
+                <li><strong>Cheerful Pink (#FFC8DD)</strong> : Header, jours fermés</li>
+                <li><strong>Warm Beige (#D2B48C)</strong> : Section info</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

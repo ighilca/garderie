@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://garderie-tresors-precieux.vercel.app/sitemap.xml
+
+# Optimisations pour les moteurs de recherche
+Disallow: /admin/
+Disallow: /private/
+
+# Permettre l'indexation des ressources importantes
+Allow: /logo.png
+Allow: /photo.png
+Allow: /photo (1).png
+Allow: /photo (2).png
+Allow: /photo (3).png
+
+# Crawl-delay pour éviter de surcharger le serveur
+Crawl-delay: 1

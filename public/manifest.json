@@ -1,0 +1,27 @@
+{
+  "name": "Garderie des trésors précieux inc.",
+  "short_name": "Garderie Trésors",
+  "description": "Garderie privée agréée à Laval offrant des services de garde de qualité pour enfants de 0 à 5 ans",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFE5F1",
+  "theme_color": "#FF8CC6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "family", "childcare"],
+  "lang": "fr-CA",
+  "dir": "ltr"
+}

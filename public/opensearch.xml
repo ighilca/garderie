@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Garderie Trésors Précieux</ShortName>
+  <Description>Recherche sur le site de la Garderie des trésors précieux inc.</Description>
+  <Tags>garderie, Laval, garde d'enfants, éducation</Tags>
+  <Contact>tresorsprecieux@gmail.com</Contact>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://garderie-tresors-precieux.vercel.app/opensearch.xml"/>
+  <Url type="text/html" rel="results" template="https://garderie-tresors-precieux.vercel.app/?q={searchTerms}"/>
+  <LongName>Garderie des trésors précieux inc. - Recherche</LongName>
+  <Image height="16" width="16" type="image/png">https://garderie-tresors-precieux.vercel.app/logo.png</Image>
+  <Query role="example" searchTerms="activités enfants" />
+  <Developer>Garderie des trésors précieux inc.</Developer>
+  <Attribution>Garderie des trésors précieux inc.</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+  <Language>fr-CA</Language>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+</OpenSearchDescription>
