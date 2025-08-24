@@ -60,7 +60,7 @@ document.querySelector('#app').innerHTML = `
   <header class="header" role="banner">
     <div class="container">
       <div class="logo">
-        <img src="/logo.png" alt="Logo Garderie des trésors précieux inc. - Garderie privée à Laval" class="logo-image" />
+        <img src="/logo.png" alt="Logo Garderie des trésors précieux  - Garderie privée à Laval" class="logo-image" />
       </div>
       
       <nav class="main-nav" role="navigation" aria-label="Navigation principale">
@@ -92,7 +92,7 @@ document.querySelector('#app').innerHTML = `
         <div class="hero-content">
           <div class="hero-text">
             <div class="hero-badge" aria-label="Certification de la garderie">🌟 Garderie privée agréée</div>
-            <h1 id="hero-title" class="hero-title">Garderie des trésors précieux inc.</h1>
+            <h1 id="hero-title" class="hero-title">Garderie des trésors précieux</h1>
             <p class="hero-subtitle">Un environnement chaleureux et stimulant pour l'épanouissement de votre enfant</p>
             <p class="hero-description">Nous offrons un service de garde de qualité pour les enfants de 0 à 5 ans dans un environnement sécurisé et bienveillant à Laval. Notre garderie privée agréée propose des programmes éducatifs adaptés et des activités créatives pour favoriser le développement de votre enfant.</p>
             <div class="hero-cta">
@@ -169,7 +169,7 @@ document.querySelector('#app').innerHTML = `
         <div class="info-content">
           <div class="info-text">
             <p>Notre garderie respecte toutes les normes et inspections régulières imposées par le gouvernement du Québec.</p>
-            <p>Bien que nous ne soyons pas subventionnés, les parents peuvent bénéficier du crédit d'impôt pour frais de garde d'enfants remboursable du Québec.</p>
+            <p>Les parents peuvent bénéficier du crédit d'impôt pour frais de garde d'enfants remboursable du Québec.</p>
             <p>Nous nous engageons à offrir un service de qualité dans un environnement sécurisé et stimulant pour l'épanouissement de votre enfant.</p>
           </div>
         </div>
@@ -307,9 +307,9 @@ document.querySelector('#app').innerHTML = `
 
   <footer class="footer" role="contentinfo">
     <div class="container">
-      <p>&copy; <span id="current-year"></span> Garderie des trésors précieux inc. - Tous droits réservés</p>
+      <p>&copy; <span id="current-year"></span> Garderie des trésors précieux - Tous droits réservés</p>
       <p>Garderie privée agréée - Laval, Québec | <a href="#accueil" aria-label="Retour en haut de la page">Retour en haut</a></p>
-      <p><small>Garderie des trésors précieux inc. - Service de garde d'enfants de 0 à 5 ans à Laval, Québec</small></p>
+      <p><small>Garderie des trésors précieux- Service de garde d'enfants de 0 à 5 ans à Laval, Québec</small></p>
     </div>
   </footer>
 `
