@@ -938,6 +938,34 @@ section h2 {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Liens de confidentialité */
+.privacy-links {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.privacy-links a {
+  color: var(--light-pink);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.privacy-links a:hover {
+  color: white;
+  background: var(--warm-pink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 140, 198, 0.4);
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .container {

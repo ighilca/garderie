@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de vos droits - Garderie des trésors précieux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/privacy-styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #FFE5F1 0%, #E8E5FF 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-family: 'Caveat Brush', cursive;
+            color: #FF8CC6;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #FF8CC6;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: 2px solid #FF8CC6;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background: #FF8CC6;
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-link" onclick="history.back()">← Retour au site</div>
+        
+        <div class="header">
+            <h1>🔐 Gestion de vos droits</h1>
+            <p>Conformément à la Loi 25 québécoise, exercez vos droits sur vos données personnelles</p>
+        </div>
+
+        <!-- Formulaire de demande d'accès -->
+        <div class="privacy-form">
+            <h3>📋 Demande d'accès à vos données</h3>
+            <p>Vous avez le droit de connaître quels renseignements personnels nous détenons sur vous et comment nous les utilisons.</p>
+            
+            <form id="access-form">
+                <div class="form-group">
+                    <label for="access-email">Adresse email *</label>
+                    <input type="email" id="access-email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="access-name">Nom complet *</label>
+                    <input type="text" id="access-name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="access-phone">Téléphone</label>
+                    <input type="tel" id="access-phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="access-reason">Raison de la demande</label>
+                    <select id="access-reason" name="reason">
+                        <option value="general">Accès général à mes données</option>
+                        <option value="specific">Accès à des données spécifiques</option>
+                        <option value="verification">Vérification de l'exactitude</option>
+                        <option value="other">Autre raison</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="access-description">Description détaillée (optionnel)</label>
+                    <textarea id="access-description" name="description" placeholder="Précisez votre demande si nécessaire..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary">Soumettre ma demande d'accès</button>
+            </form>
+        </div>
+
+        <!-- Formulaire de demande de rectification -->
+        <div class="privacy-form">
+            <h3>✏️ Demande de rectification</h3>
+            <p>Vous avez le droit de corriger, mettre à jour ou supprimer des renseignements personnels inexacts ou incomplets.</p>
+            
+            <form id="rectification-form">
+                <div class="form-group">
+                    <label for="rect-email">Adresse email *</label>
+                    <input type="email" id="rect-email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rect-name">Nom complet *</label>
+                    <input type="text" id="rect-name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rect-data-type">Type de données à rectifier *</label>
+                    <select id="rect-data-type" name="dataType" required>
+                        <option value="">Sélectionnez un type</option>
+                        <option value="personal">Informations personnelles (nom, adresse, téléphone)</option>
+                        <option value="medical">Informations médicales</option>
+                        <option value="contact">Coordonnées de contact</option>
+                        <option value="other">Autre type de données</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rect-description">Description de la rectification demandée *</label>
+                    <textarea id="rect-description" name="description" required placeholder="Décrivez précisément ce qui doit être corrigé, mis à jour ou supprimé..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary">Soumettre ma demande de rectification</button>
+            </form>
+        </div>
+
+        <!-- Formulaire de retrait de consentement -->
+        <div class="privacy-form">
+            <h3>🚫 Retrait de consentement</h3>
+            <p>Vous pouvez retirer votre consentement à tout moment. Notez que cela peut affecter notre capacité à fournir certains services.</p>
+            
+            <form id="withdrawal-form">
+                <div class="form-group">
+                    <label for="withdrawal-email">Adresse email *</label>
+                    <input type="email" id="withdrawal-email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="withdrawal-name">Nom complet *</label>
+                    <input type="text" id="withdrawal-name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="withdrawal-type">Type de consentement à retirer *</label>
+                    <select id="withdrawal-type" name="consentType" required>
+                        <option value="">Sélectionnez un type</option>
+                        <option value="analytics">Analyses et statistiques</option>
+                        <option value="marketing">Communication et marketing</option>
+                        <option value="all">Tous les consentements</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="withdrawal-reason">Raison du retrait (optionnel)</label>
+                    <textarea id="withdrawal-reason" name="reason" placeholder="Pourquoi souhaitez-vous retirer ce consentement ?"></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary">Retirer mon consentement</button>
+            </form>
+        </div>
+
+        <!-- Suivi des demandes -->
+        <div class="privacy-form">
+            <h3>📊 Suivi de vos demandes</h3>
+            <p>Consultez l'état de vos demandes précédentes.</p>
+            
+            <div id="requests-container">
+                <p>Aucune demande enregistrée pour le moment.</p>
+            </div>
+        </div>
+
+        <!-- Informations importantes -->
+        <div class="privacy-form">
+            <h3>ℹ️ Informations importantes</h3>
+            <div class="highlight">
+                <p><strong>Délai de réponse :</strong> Conformément à la Loi 25, nous répondrons à votre demande dans les 30 jours suivant sa réception.</p>
+                <p><strong>Identification :</strong> Nous pourrons vous demander de vous identifier pour traiter votre demande de manière sécurisée.</p>
+                <p><strong>Gratuité :</strong> L'exercice de vos droits est gratuit, sauf si la demande est manifestement déraisonnable ou excessive.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/privacy-management.js"></script>
+    <script>
+        // Gestion des formulaires
+        document.getElementById('access-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            if (window.privacyManager) {
+                window.privacyManager.requestDataAccess(data.email);
+            } else {
+                alert('Votre demande d\'accès a été enregistrée. Nous vous répondrons dans les 30 jours.');
+            }
+        });
+
+        document.getElementById('rectification-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            if (window.privacyManager) {
+                window.privacyManager.requestDataRectification(data.email, data.dataType, data.description);
+            } else {
+                alert('Votre demande de rectification a été enregistrée. Nous vous répondrons dans les 30 jours.');
+            }
+        });
+
+        document.getElementById('withdrawal-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulation du retrait de consentement
+            alert('Votre demande de retrait de consentement a été enregistrée. Nous traiterons votre demande dans les plus brefs délais.');
+        });
+
+        // Affichage des demandes existantes
+        function displayRequests() {
+            const container = document.getElementById('requests-container');
+            const logs = JSON.parse(localStorage.getItem('data_requests_log') || '[]');
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<p>Aucune demande enregistrée pour le moment.</p>';
+                return;
+            }
+
+            let html = '<table class="requests-table">';
+            html += '<thead><tr><th>Type</th><th>Date</th><th>Statut</th><th>Détails</th></tr></thead><tbody>';
+            
+            logs.forEach(request => {
+                const date = new Date(request.timestamp).toLocaleDateString('fr-CA');
+                html += `<tr>
+                    <td>${request.type === 'access_request' ? 'Accès' : 'Rectification'}</td>
+                    <td>${date}</td>
+                    <td class="status-pending">En cours</td>
+                    <td>${request.userEmail}</td>
+                </tr>`;
+            });
+            
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            displayRequests();
+        });
+    </script>
+</body>
+</html>

@@ -49,12 +49,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Mettre à jour l'année dans le footer
-  const currentYearElement = document.getElementById('current-year');
-  if (currentYearElement) {
-    currentYearElement.textContent = new Date().getFullYear();
-  }
-});
+          // Mettre à jour l'année dans le footer
+        const currentYearElement = document.getElementById('current-year');
+        if (currentYearElement) {
+          currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        // Gestion des liens de confidentialité
+        const managePrivacyLink = document.getElementById('manage-privacy');
+        const dataRightsLink = document.getElementById('data-rights');
+
+        if (managePrivacyLink) {
+          managePrivacyLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.privacyManager) {
+              window.privacyManager.showConsentModal();
+            }
+          });
+        }
+
+        if (dataRightsLink) {
+          dataRightsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open('/data-rights.html', '_blank');
+          });
+        }
+      });
 
 document.querySelector('#app').innerHTML = `
   <header class="header" role="banner">
@@ -310,6 +330,13 @@ document.querySelector('#app').innerHTML = `
       <p>&copy; <span id="current-year"></span> Garderie des trésors précieux - Tous droits réservés</p>
       <p>Garderie privée agréée - Laval, Québec | <a href="#accueil" aria-label="Retour en haut de la page">Retour en haut</a></p>
       <p><small>Garderie des trésors précieux- Service de garde d'enfants de 0 à 5 ans à Laval, Québec</small></p>
+      
+      <!-- Liens de confidentialité conformes à la Loi 25 -->
+      <div class="privacy-links">
+        <a href="/privacy-policy.html" target="_blank" aria-label="Politique de confidentialité">Politique de confidentialité</a>
+        <a href="#" id="manage-privacy" aria-label="Gérer mes préférences de confidentialité">Gérer mes préférences</a>
+        <a href="#" id="data-rights" aria-label="Exercer mes droits sur mes données">Mes droits sur mes données</a>
+      </div>
     </div>
   </footer>
 `

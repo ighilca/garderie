@@ -1,0 +1,396 @@
+/* Styles pour le système de confidentialité conforme à la Loi 25 québécoise */
+
+/* Bannière de consentement */
+.privacy-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 20px;
+    z-index: 10000;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+    animation: slideUp 0.5s ease-out;
+}
+
+.privacy-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.privacy-content p {
+    margin: 0;
+    flex: 1;
+    min-width: 300px;
+}
+
+.privacy-content a {
+    color: #FF8CC6;
+    text-decoration: underline;
+}
+
+.privacy-buttons {
+    display: flex;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+/* Modal de consentement */
+.consent-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 10001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.consent-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.consent-content h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 2rem;
+}
+
+.consent-options {
+    margin: 30px 0;
+}
+
+.consent-option {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid #FF8CC6;
+}
+
+.consent-option input[type="checkbox"] {
+    margin-right: 15px;
+    transform: scale(1.2);
+}
+
+.consent-option label {
+    font-weight: 600;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.consent-option small {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.consent-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.consent-note {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Boutons */
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    min-width: 120px;
+}
+
+.btn-primary {
+    background: #FF8CC6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #FF6BA6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 140, 198, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #FF8CC6;
+    border: 2px solid #FF8CC6;
+}
+
+.btn-secondary:hover {
+    background: #FF8CC6;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    z-index: 10002;
+    max-width: 400px;
+    animation: slideInRight 0.3s ease-out;
+    border-left: 4px solid;
+}
+
+.notification-info {
+    border-left-color: #17a2b8;
+}
+
+.notification-success {
+    border-left-color: #28a745;
+}
+
+.notification-warning {
+    border-left-color: #ffc107;
+}
+
+.notification-error {
+    border-left-color: #dc3545;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    float: right;
+    margin-left: 15px;
+    color: #6c757d;
+}
+
+.notification-close:hover {
+    color: #2c3e50;
+}
+
+/* Formulaire de gestion des droits */
+.privacy-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.privacy-form h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-family: 'Caveat Brush', cursive;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #FF8CC6;
+    box-shadow: 0 0 0 3px rgba(255, 140, 198, 0.1);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Tableau des demandes */
+.requests-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.requests-table th,
+.requests-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.requests-table th {
+    background: #FFE5F1;
+    color: #2c3e50;
+    font-weight: 600;
+    font-family: 'Caveat Brush', cursive;
+}
+
+.requests-table tr:hover {
+    background: #f8f9fa;
+}
+
+.status-pending {
+    color: #ffc107;
+    font-weight: 600;
+}
+
+.status-completed {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.status-rejected {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .privacy-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .privacy-buttons {
+        justify-content: center;
+    }
+    
+    .consent-content {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .consent-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+/* Accessibilité */
+.privacy-banner:focus-within,
+.consent-modal:focus-within {
+    outline: 2px solid #FF8CC6;
+    outline-offset: 2px;
+}
+
+/* Mode sombre (si activé) */
+@media (prefers-color-scheme: dark) {
+    .consent-content {
+        background: #2c3e50;
+        color: white;
+    }
+    
+    .consent-option {
+        background: #34495e;
+    }
+    
+    .privacy-form {
+        background: #2c3e50;
+        color: white;
+    }
+    
+    .requests-table {
+        background: #2c3e50;
+        color: white;
+    }
+    
+    .requests-table th {
+        background: #34495e;
+    }
+    
+    .requests-table tr:hover {
+        background: #34495e;
+    }
+}
