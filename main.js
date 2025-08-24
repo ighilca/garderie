@@ -339,4 +339,184 @@ document.querySelector('#app').innerHTML = `
       </div>
     </div>
   </footer>
-`
+`;
+
+// ===== SYSTÈME DE CONFIDENTIALITÉ INTÉGRÉ =====
+class PrivacyManager {
+  constructor() {
+    this.consentKey = 'garderie_privacy_consent';
+    this.dataKey = 'garderie_user_data';
+    this.init();
+  }
+
+  init() {
+    this.checkConsent();
+    this.createPrivacyBanner();
+    this.setupEventListeners();
+  }
+
+  // Vérification du consentement existant
+  checkConsent() {
+    const consent = localStorage.getItem(this.consentKey);
+    if (!consent) {
+      this.showConsentModal();
+    }
+  }
+
+  // Création de la bannière de consentement
+  createPrivacyBanner() {
+    const banner = document.createElement('div');
+    banner.id = 'privacy-banner';
+    banner.className = 'privacy-banner';
+    banner.innerHTML = `
+      <div class="privacy-content">
+        <p>🔒 Nous utilisons des cookies et collectons des données pour améliorer votre expérience. 
+        <a href="/privacy-policy.html" target="_blank">En savoir plus</a></p>
+        <div class="privacy-buttons">
+          <button id="accept-all" class="btn-primary">Accepter tout</button>
+          <button id="customize" class="btn-secondary">Personnaliser</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(banner);
+  }
+
+  // Modal de consentement détaillé
+  showConsentModal() {
+    const modal = document.createElement('div');
+    modal.id = 'consent-modal';
+    modal.className = 'consent-modal';
+    modal.innerHTML = `
+      <div class="consent-content">
+        <h2>🔒 Gestion de vos préférences de confidentialité</h2>
+        <p>Conformément à la Loi 25 québécoise, nous devons obtenir votre consentement pour collecter et traiter vos données.</p>
+        
+        <div class="consent-options">
+          <div class="consent-option">
+            <input type="checkbox" id="essential" checked disabled>
+            <label for="essential">Fonctionnement essentiel du site (obligatoire)</label>
+            <small>Nécessaire au bon fonctionnement du site</small>
+          </div>
+          
+          <div class="consent-option">
+            <input type="checkbox" id="analytics">
+            <label for="analytics">Analyses et statistiques</label>
+            <small>Pour améliorer nos services et comprendre l'utilisation du site</small>
+          </div>
+          
+          <div class="consent-option">
+            <input type="checkbox" id="marketing">
+            <label for="marketing">Communication et marketing</label>
+            <small>Pour vous informer de nos services et actualités</small>
+          </div>
+        </div>
+        
+        <div class="consent-buttons">
+          <button id="save-preferences" class="btn-primary">Sauvegarder mes préférences</button>
+          <button id="accept-all-consent" class="btn-secondary">Accepter tout</button>
+        </div>
+        
+        <p class="consent-note">
+          <small>Vous pouvez modifier vos préférences à tout moment via le lien en bas de page.</small>
+        </p>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    this.setupConsentModalEvents();
+  }
+
+  // Gestion des événements du modal de consentement
+  setupConsentModalEvents() {
+    document.getElementById('save-preferences').addEventListener('click', () => {
+      this.saveConsentPreferences();
+    });
+    
+    document.getElementById('accept-all-consent').addEventListener('click', () => {
+      this.acceptAllConsent();
+    });
+  }
+
+  // Sauvegarde des préférences de consentement
+  saveConsentPreferences() {
+    const preferences = {
+      essential: true,
+      analytics: document.getElementById('analytics').checked,
+      marketing: document.getElementById('marketing').checked,
+      timestamp: new Date().toISOString(),
+      version: '1.0'
+    };
+    
+    localStorage.setItem(this.consentKey, JSON.stringify(preferences));
+    this.hideConsentModal();
+    this.updatePrivacyBanner();
+    
+    this.showNotification('Vos préférences de confidentialité ont été sauvegardées.', 'success');
+  }
+
+  // Acceptation de tout le consentement
+  acceptAllConsent() {
+    const preferences = {
+      essential: true,
+      analytics: true,
+      marketing: true,
+      timestamp: new Date().toISOString(),
+      version: '1.0'
+    };
+    
+    localStorage.setItem(this.consentKey, JSON.stringify(preferences));
+    this.hideConsentModal();
+    this.updatePrivacyBanner();
+    
+    this.showNotification('Tous les consentements ont été acceptés.', 'success');
+  }
+
+  // Masquage du modal de consentement
+  hideConsentModal() {
+    const modal = document.getElementById('consent-modal');
+    if (modal) {
+      modal.remove();
+    }
+  }
+
+  // Mise à jour de la bannière de confidentialité
+  updatePrivacyBanner() {
+    const banner = document.getElementById('privacy-banner');
+    if (banner) {
+      banner.style.display = 'none';
+    }
+  }
+
+  // Configuration des événements principaux
+  setupEventListeners() {
+    document.addEventListener('click', (e) => {
+      if (e.target.id === 'accept-all') {
+        this.acceptAllConsent();
+      } else if (e.target.id === 'customize') {
+        this.showConsentModal();
+      }
+    });
+  }
+
+  // Affichage des notifications
+  showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+      <span>${message}</span>
+      <button class="notification-close">&times;</button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 5000);
+    
+    notification.querySelector('.notification-close').addEventListener('click', () => {
+      notification.remove();
+    });
+  }
+}
+
+// Initialisation du gestionnaire de confidentialité
+window.privacyManager = new PrivacyManager();
