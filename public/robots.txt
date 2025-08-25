@@ -9,7 +9,7 @@ Disallow: /admin/
 Disallow: /private/
 
 # Permettre l'indexation des ressources importantes
-Allow: /logo.png
+Allow: /logo-garderie.png
 Allow: /photo.png
 Allow: /photo (1).png
 Allow: /photo (2).png

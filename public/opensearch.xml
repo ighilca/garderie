@@ -7,7 +7,7 @@
   <Url type="application/opensearchdescription+xml" rel="self" template="https://garderie-tresors-precieux.vercel.app/opensearch.xml"/>
   <Url type="text/html" rel="results" template="https://garderie-tresors-precieux.vercel.app/?q={searchTerms}"/>
   <LongName>Garderie des trésors précieux inc. - Recherche</LongName>
-  <Image height="16" width="16" type="image/png">https://garderie-tresors-precieux.vercel.app/logo.png</Image>
+  <Image height="16" width="16" type="image/png">https://garderie-tresors-precieux.vercel.app/logo-garderie.png</Image>
   <Query role="example" searchTerms="activités enfants" />
   <Developer>Garderie des trésors précieux inc.</Developer>
   <Attribution>Garderie des trésors précieux inc.</Attribution>

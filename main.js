@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Gestion des liens de confidentialité
         const managePrivacyLink = document.getElementById('manage-privacy');
         const dataRightsLink = document.getElementById('data-rights');
+        const revokeConsentLink = document.getElementById('revoke-consent');
 
         if (managePrivacyLink) {
           managePrivacyLink.addEventListener('click', function(e) {
@@ -74,13 +75,22 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open('/data-rights.html', '_blank');
           });
         }
+
+        if (revokeConsentLink) {
+          revokeConsentLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.privacyManager) {
+              window.privacyManager.revokeConsent();
+            }
+          });
+        }
       });
 
 document.querySelector('#app').innerHTML = `
   <header class="header" role="banner">
     <div class="container">
       <div class="logo">
-        <img src="/logo.png" alt="Logo Garderie des trésors précieux  - Garderie privée à Laval" class="logo-image" />
+        <img src="/logo-garderie.png" alt="Logo Garderie des trésors précieux  - Garderie à Laval" class="logo-image" />
       </div>
       
       <nav class="main-nav" role="navigation" aria-label="Navigation principale">
@@ -111,10 +121,10 @@ document.querySelector('#app').innerHTML = `
       <div class="container">
         <div class="hero-content">
           <div class="hero-text">
-            <div class="hero-badge" aria-label="Certification de la garderie">🌟 Garderie privée agréée</div>
+            
             <h1 id="hero-title" class="hero-title">Garderie des trésors précieux</h1>
             <p class="hero-subtitle">Un environnement chaleureux et stimulant pour l'épanouissement de votre enfant</p>
-            <p class="hero-description">Nous offrons un service de garde de qualité pour les enfants de 0 à 5 ans dans un environnement sécurisé et bienveillant à Laval. Notre garderie privée agréée propose des programmes éducatifs adaptés et des activités créatives pour favoriser le développement de votre enfant.</p>
+            <p class="hero-description">Nous offrons un service de garde de qualité pour les enfants de 0 à 5 ans dans un environnement sécurisé et bienveillant à Laval. Notre garderie propose des programmes éducatifs adaptés et des activités créatives pour favoriser le développement de votre enfant.</p>
             <div class="hero-cta">
               <a href="#contact" class="cta-button primary" aria-label="Contacter la garderie des trésors précieux">Nous contacter</a>
               <a href="#informations" class="cta-button secondary" aria-label="En savoir plus sur notre garderie">En savoir plus</a>
@@ -328,7 +338,7 @@ document.querySelector('#app').innerHTML = `
   <footer class="footer" role="contentinfo">
     <div class="container">
       <p>&copy; <span id="current-year"></span> Garderie des trésors précieux - Tous droits réservés</p>
-      <p>Garderie privée agréée - Laval, Québec | <a href="#accueil" aria-label="Retour en haut de la page">Retour en haut</a></p>
+      <p>Garderie des trésors précieux - Laval, Québec | <a href="#accueil" aria-label="Retour en haut de la page">Retour en haut</a></p>
       <p><small>Garderie des trésors précieux- Service de garde d'enfants de 0 à 5 ans à Laval, Québec</small></p>
       
       <!-- Liens de confidentialité conformes à la Loi 25 -->
@@ -336,6 +346,7 @@ document.querySelector('#app').innerHTML = `
         <a href="/privacy-policy.html" target="_blank" aria-label="Politique de confidentialité">Politique de confidentialité</a>
         <a href="#" id="manage-privacy" aria-label="Gérer mes préférences de confidentialité">Gérer mes préférences</a>
         <a href="#" id="data-rights" aria-label="Exercer mes droits sur mes données">Mes droits sur mes données</a>
+        <a href="#" id="revoke-consent" aria-label="Révoquer mon consentement">Révoquer le consentement</a>
       </div>
     </div>
   </footer>
@@ -358,12 +369,23 @@ class PrivacyManager {
   // Vérification du consentement existant
   checkConsent() {
     const consent = localStorage.getItem(this.consentKey);
-    // On n'affiche plus automatiquement le modal
-    // Seule la bannière s'affiche
+    if (consent) {
+      // L'utilisateur a déjà donné son consentement
+      // On cache la bannière et on ne l'affiche plus
+      this.consentGiven = true;
+      return;
+    }
+    // Pas de consentement, on affiche la bannière
+    this.consentGiven = false;
   }
 
   // Création de la bannière de consentement
   createPrivacyBanner() {
+    // Si l'utilisateur a déjà donné son consentement, on ne crée pas la bannière
+    if (this.consentGiven) {
+      return;
+    }
+    
     const banner = document.createElement('div');
     banner.id = 'privacy-banner';
     banner.className = 'privacy-banner';
@@ -484,6 +506,25 @@ class PrivacyManager {
       // On cache la bannière seulement si l'utilisateur a fait un choix
       banner.style.display = 'none';
     }
+    // Mettre à jour l'état du consentement
+    this.consentGiven = true;
+  }
+
+  // Révoquer le consentement et afficher à nouveau la bannière
+  revokeConsent() {
+    localStorage.removeItem(this.consentKey);
+    this.consentGiven = false;
+    
+    // Supprimer l'ancienne bannière si elle existe
+    const oldBanner = document.getElementById('privacy-banner');
+    if (oldBanner) {
+      oldBanner.remove();
+    }
+    
+    // Recréer et afficher la bannière
+    this.createPrivacyBanner();
+    
+    this.showNotification('Votre consentement a été révoqué. Vous pouvez le modifier à nouveau.', 'info');
   }
 
   // Configuration des événements principaux
@@ -503,6 +544,9 @@ class PrivacyManager {
         this.showNotification('Tous les consentements ont été acceptés.', 'success');
       } else if (e.target.id === 'customize') {
         this.showConsentModal();
+      } else if (e.target.id === 'revoke-consent') {
+        e.preventDefault();
+        this.revokeConsent();
       }
     });
   }

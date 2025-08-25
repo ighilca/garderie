@@ -33,7 +33,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 80%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -42,7 +42,7 @@ body {
 .header {
   background: var(--soft-white);
   color: var(--text-dark);
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   position: relative;
   box-shadow: 0 2px 20px rgba(255, 182, 217, 0.15);
   border-bottom: 3px solid var(--light-pink);
@@ -50,24 +50,27 @@ body {
 
 .header .container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  flex-direction: row;
+  gap: 1.5rem;
+  text-align: center;
 }
 
 .logo {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .logo-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 25px;
-  background: var(--warm-white);
-  padding: 10px;
-  box-shadow: 0 4px 15px rgba(255, 140, 198, 0.2);
+  width: 160px;
+  height: auto;
+  max-height: 160px;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -98,15 +101,19 @@ body {
 .main-nav {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .nav-list {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 .nav-link {
@@ -175,9 +182,10 @@ body {
   position: relative;
   background: linear-gradient(135deg, var(--soft-pink) 0%, var(--soft-violet) 100%);
   padding: 6rem 0 4rem;
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem auto;
   border-radius: 0 0 40px 40px;
   overflow: hidden;
+  width: 80%;
 }
 
 .hero-background {
@@ -383,7 +391,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
-  max-width: 900px;
+  max-width: 80%;
   margin: 0 auto;
 }
 
@@ -548,11 +556,12 @@ section h2 {
   background: linear-gradient(135deg, var(--warm-beige) 0%, var(--sunny-yellow) 100%);
   padding: 3rem 0;
   border-radius: 16px;
-  margin: 2rem 0;
+  margin: 2rem auto;
+  width: 80%;
 }
 
 .info-content {
-  max-width: 800px;
+  max-width: 80%;
   margin: 0 auto;
 }
 
@@ -567,10 +576,11 @@ section h2 {
 /* Photo sections */
 .photo-section {
   padding: 4rem 0;
-  margin: 2rem 0;
+  margin: 2rem auto;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 2px solid rgba(255, 140, 198, 0.1);
+  width: 80%;
 }
 
 .photo-learning {
@@ -677,7 +687,8 @@ section h2 {
   background: linear-gradient(135deg, var(--soft-pink) 0%, var(--soft-violet) 100%);
   padding: 4rem 0;
   border-radius: 30px;
-  margin: 2rem 0;
+  margin: 2rem auto;
+  width: 80%;
 }
 
 .contact-grid {
@@ -1028,7 +1039,7 @@ section h2 {
   background: white;
   border-radius: 20px;
   padding: 40px;
-  max-width: 600px;
+  max-width: 80%;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -1235,17 +1246,27 @@ section h2 {
 /* Responsive design */
 @media (max-width: 768px) {
   .container {
+    max-width: 90%;
     padding: 0 15px;
+  }
+  
+  .hero,
+  .info,
+  .photo-section,
+  .contact {
+    width: 90%;
   }
   
   .header .container {
     flex-direction: column;
     gap: 1rem;
+    text-align: center;
   }
   
   .logo {
     flex-direction: column;
     gap: 1rem;
+    text-align: center;
   }
   
   .main-nav {
@@ -1274,8 +1295,10 @@ section h2 {
   }
   
   .logo-image {
-    width: 100px;
-    height: 100px;
+    width: 160px;
+    height: auto;
+    max-height: 160px;
+    object-fit: contain;
   }
   
   .logo-text {
